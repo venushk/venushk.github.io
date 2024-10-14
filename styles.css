@@ -1,0 +1,385 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+body {
+  font-family: "Montserrat", sans-serif;
+  line-height: 130%;
+  font-weight: 600;
+  display: grid;
+  justify-content: center;
+  color: #f5f121;
+  background-color: #161207;
+  
+  text-align: center;
+  font-size: 25px;
+  text-shadow: 
+  -0.5px -0.5px 0 rgb(82, 0, 0),  
+  0.5px -0.5px 0 rgb(82, 0, 0),
+  -0.5px  0.5px 0 rgb(82, 0, 0),
+  0.5px  0.5px 0 rgb(82, 0, 0);
+
+}
+
+.panel{
+ background: linear-gradient(45deg, #8f0a05dc, #fbff0f, #DAA520, #ec7a0e);
+ margin-left: 14px;
+ padding: 10px;
+ margin-top: -10px;
+ z-index: 1000;
+ border-radius: 25px;
+ color: #ffffff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3), 0 0 10px rgba(255, 215, 0, 0.7), 0 0 30px rgba(255, 105, 180, 0.5);
+  width: 520px;
+  
+}
+
+h1{
+  font-family: "Great Vibes", cursive;
+  line-height: 1%;
+}
+
+#betAmount {
+  -webkit-appearance: none;
+  width: 200px;
+  height: 10px;
+  background: #ffeaf5;
+  border-radius: 30px;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  display: inline-flex;
+  margin-right: 20px;
+  
+}
+#betAmount::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: rgb(255, 0, 55);
+
+  border-radius: 50%;
+  cursor: pointer;  
+
+}
+
+
+.game{
+  display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.matrix-container {
+  display: inline-block;
+  margin: 2px;
+  border: 1.5px solid #cccccc65;
+  border-radius: 15px;
+  padding: 1px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3), 0 0 10px rgba(255, 215, 0, 0.7), 0 0 30px rgba(255, 105, 180, 0.5);
+  margin-right: -125px;
+
+}
+
+.stats{
+  margin-left:150px;
+  max-width: 50px;
+  margin-bottom: 310px;
+ 
+}
+
+#balance{
+  padding: 10px;
+  width: 130px;
+  border-radius: 30px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3), 0 0 10px rgba(255, 215, 0, 0.7), 0 0 30px rgba(255, 105, 180, 0.5);
+  background: linear-gradient(45deg, #8f0a05dc, #fbff0f, #DAA520, #ec7a0e);
+  color: #ffffff;
+}
+
+
+.row {
+  display: flex; /* Используем флекс для создания строки */
+}
+
+.symbol {
+  width: 100px;
+  height: 90px; /* Увеличиваем высоту символов для лучшего отображения */
+  display: flex;
+  align-items: center; /* Центрируем символы по вертикали */
+  justify-content: center; /* Центрируем символы по горизонтали */
+  margin: 5px;
+  border: 1.5px solid #cccccc65;
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  background-size: cover; /* Обеспечиваем, чтобы изображение заполнило элемент */
+  background-position: center; /* Центрируем изображение */
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 215, 0, 1), 0 0 60px rgba(255, 105, 180, 0.9);
+}
+
+.highlight {
+  background-color: yellow; /* Цвет подсветки для выигрышных символов */
+}
+
+.special-bounce {
+  animation: bounce 0.5s;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+  }
+  40% {
+      transform: translateY(-10px);
+  }
+  60% {
+      transform: translateY(-5px);
+  }
+}
+
+
+
+.win-popup {
+  display: none;
+  position: fixed;
+  top: 10%; /* Вы можете изменить это значение для размещения уведомления */
+  left: 48%;
+  transform: translateX(-50%);
+  z-index: 9999; /* Обеспечиваем, чтобы оно было поверх остальных элементов */
+  font-size: 37px;
+  background: linear-gradient(45deg, #8f0a05dc, #fbff0fcc, #daa520d2, #ec790ed2);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 215, 0, 1), 0 0 60px rgba(255, 105, 180, 0.9);
+  padding: 25px;
+  border-radius: 30px;
+ 
+  transition: opacity 0.5s ease; /* Плавный переход для появления и исчезновения */
+  opacity: 0; /* Изначально невидимо */
+  width: 350x;
+}
+
+.low {
+
+}
+
+.win-popup.medium {
+  background-color: gold; /* Цвет для средних коэффициентов */
+}
+
+.win-popup.high {
+  background-color: lightcoral; /* Цвет для высоких коэффициентов */
+}
+
+/* Анимация лопания */
+.pop-and-fade {
+  animation: pop-and-fade 0.5s ease forwards;
+}
+
+@keyframes pop-and-fade {
+  0% {
+      transform: scale(1);
+      opacity: 1;
+  }
+  100% {
+      transform: scale(0);
+      opacity: 0;
+  }
+}
+
+.win-popup-content {
+  text-align: center;
+ 
+  
+ 
+  
+  font-family: "Great Vibes", cursive;
+  
+  animation: scaleUp 3s ease-out forwards;
+}
+
+.win-popup-content h2 {
+ 
+  font-weight: bold;
+  color: white; /* Прозрачный текст для создания эффекта градиента */
+
+  background-clip: text;
+  -webkit-background-clip: text; /* Для поддержания градиента на текст в Webkit браузерах */
+  animation: glitter 3s infinite;
+  text-align: center;
+  text-shadow: 2px 2px 5px rgba(231, 226, 255, 0.6); /* Эффект блеска */
+}
+
+@keyframes glitter {
+  0%, 100% {
+      text-shadow: 2px 2px 5px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 105, 180, 0.5);
+  }
+  50% {
+      text-shadow: 2px 2px 5px rgba(255, 215, 0, 0.6), 0 0 30px rgba(255, 215, 0, 0.8);
+  }
+}
+
+.win-popup-content p {
+  font-size: 45px;
+  color: #fff;
+  margin: 0;
+}
+
+.win-popup-content .icon {
+  font-size: 50px;
+  color: #ffffffad; /* Желтый цвет для иконки */
+
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+
+/* Анимация исчезновения */
+@keyframes fadeOut {
+  0% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0;
+  }
+}
+
+/* Анимация плавного увеличения */
+@keyframes scaleUp {
+  0% {
+      transform: scale(0.5);
+  }
+  70% {
+      transform: scale(1.05); /* Легкий bounce-эффект */
+  }
+  100% {
+      transform: scale(1);
+  }
+}
+
+
+/* Анимация плавного увеличения */
+@keyframes scaleUp {
+  0% {
+      transform: scale(0.5);
+  }
+  70% {
+      transform: scale(1.05); /* Легкий bounce-эффект */
+  }
+  100% {
+      transform: scale(1);
+  }
+}
+
+.glam-button {
+  background: linear-gradient(45deg, #ff0303, #e28902, #ffd700); /* Яркий градиент в стиле казино */
+  background-size: 300%;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 25px;
+  padding: 15px 30px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3), 0 0 10px rgba(255, 215, 0, 0.7), 0 0 30px rgba(255, 105, 180, 0.5);
+  cursor: pointer;
+  transition: all 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.glam-button:hover {
+  background-position: right; /* Анимация градиента при наведении */
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 215, 0, 1), 0 0 60px rgba(255, 105, 180, 0.9);
+  transform: scale(1.1); /* Легкое увеличение кнопки при наведении */
+  
+}
+
+.glam-button:before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 80%);
+  opacity: 0.8;
+  animation: sparkle 3s infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% {
+      transform: translate(50%, -50%) rotate(0deg);
+  }
+  50% {
+      transform: translate(50%, -50%) rotate(360deg);
+  }
+}
+
+/* Анимация лопания и исчезновения */
+@keyframes popAndFade {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.3); /* Легкое увеличение перед исчезновением */
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(0.8); /* Уменьшение до 0 */
+    opacity: 0; /* Исчезновение */
+  }
+}
+
+.pop-and-fade {
+  animation: popAndFade 1s forwards; /* Применение анимации с продолжительностью в 1 сек */
+}
+
+@media (max-width: 768px) {
+  body{
+    display: block;
+    justify-content: center;
+    max-width: 95%;
+  }
+
+  h1{
+    display: flex;
+    margin-left: 50%;
+    line-height: 50%;
+  }
+  .game{
+  display: block;
+  }
+  .stats{
+    display: flex;
+    justify-content: center;
+    max-width: 80%;
+    
+
+   margin-bottom: 31px;
+  }
+  #balance{
+    width: 350px;
+    margin-left: 5%;
+  }
+  .symbol {
+    
+    height: 100px;
+
+  }
+  .win-popup{
+    width: 80%;
+    background: linear-gradient(45deg, #8f0a057a, #fbff0f80, #daa52073, #ec790e7c);
+    display: grid;
+    justify-content: center;
+  }
+}
